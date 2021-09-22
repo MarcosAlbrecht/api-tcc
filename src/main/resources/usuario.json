@@ -1,0 +1,80 @@
+[{
+  "_id": {
+    "$oid": "61448148a0e87dd375d05120"
+  },
+  "nome": "Marcos",
+  "idade": 27,
+  "telefone": "999119635",
+  "ddd": 45,
+  "cep": "85960000",
+  "cidade": {
+    "$oid": "614482afa0e87dd375d05121"
+  },
+  "estado": {
+    "$oid": "614482c6a0e87dd375d05122"
+  },
+  "apelido": "marcosdamassa",
+  "cpf": "09348031961",
+  "foto": "",
+  "data_cadastro": {
+    "$date": "2021-09-21T03:00:00Z"
+  },
+  "tipo_usuario": "admin"
+},{
+  "_id": {
+    "$oid": "614a1a76cd6d76727d453bae"
+  },
+  "nome": "Joao",
+  "idade": 50,
+  "telefone": "96531596",
+  "ddd": 45,
+  "cep": "85960000",
+  "cidade": {
+    "$oid": "614482afa0e87dd375d05121"
+  },
+  "estado": {
+    "$oid": "614482c6a0e87dd375d05122"
+  },
+  "apelido": "joaodamassa",
+  "cpf": "12365489756",
+  "foto": "",
+  "data_cadastro": {
+    "$date": "2021-09-21T03:00:00Z"
+  },
+  "tipo_usuario": "user"
+},{
+  "_id": {
+    "$oid": "614a2c7e345ac160d472213f"
+  },
+  "nome": "Spider Man Man",
+  "idade": 18,
+  "telefone": "999648521",
+  "ddd": 45,
+  "cep": "85960000",
+  "cidade": "614482afa0e87dd375d05121",
+  "estado": "614482c6a0e87dd375d05122",
+  "apelido": "spider",
+  "cpf": "34658974521",
+  "foto": "",
+  "data_cadastro": {
+    "$date": "2021-09-20T00:00:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "614b633007d4c252b2f43b85"
+  },
+  "nome": "Marcos Rocha Pato",
+  "idade": 18,
+  "telefone": "652189756",
+  "ddd": 45,
+  "cep": "85960000",
+  "cidade": "614482afa0e87dd375d05121",
+  "estado": "614482c6a0e87dd375d05122",
+  "apelido": "marcola",
+  "cpf": "34658974521",
+  "foto": "",
+  "data_cadastro": {
+    "$date": "2021-09-22T00:00:00Z"
+  },
+  "_class": "com.example.apitcc.models.Usuario"
+}]
