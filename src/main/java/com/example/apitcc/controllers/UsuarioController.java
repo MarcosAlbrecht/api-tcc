@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,13 +30,25 @@ public class UsuarioController {
         logger.info("Getting all users.");
         return usuarioRepository.findAll();
     }
-    @GetMapping(value = "/{userId}")
+    @GetMapping(value = "/usersid/{userId}")
     public Usuario getUserById(@PathVariable String userId) {
         logger.info("Getting users with ID: {}", userId);
         return usuarioRepository.findUsuarioById(userId);
     } 
 
-    @PostMapping (value = "/create") 
+    @GetMapping(value = "/usersname/{username}")
+    public List<Usuario> getUserByName(@PathVariable String username) {
+        logger.info("Getting users with Name: {}", username);
+        return usuarioRepository.findUsuarioByNome(username);
+    } 
+
+    @PutMapping(value = "/usersupdate/{userId}")
+    public Usuario updateUser(@PathVariable String userId, @RequestBody Usuario usuario) {
+        logger.info("Updating user with ID: {}", userId);
+        return usuarioRepository.save(usuario);
+    }
+
+    @PostMapping (value = "/users/create") 
     public Usuario addUsuario(@RequestBody Usuario user) { 
         logger.info ("Saving user."); 
         return usuarioRepository.save(user); 

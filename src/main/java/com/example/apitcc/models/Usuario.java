@@ -1,8 +1,6 @@
 package com.example.apitcc.models;
 
 import java.util.Date;
-
-import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,7 +18,7 @@ public class Usuario {
     private String estado;
     private String apelido;
     private String cpf;
-    private Binary foto;
+    private String foto;
     private Date data_cadastro;
 
     
@@ -113,11 +111,11 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public Binary getFoto() {
+    public String getFoto() {
         return this.foto;
     }
 
-    public void setFoto(Binary foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
