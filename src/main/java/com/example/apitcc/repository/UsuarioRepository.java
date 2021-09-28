@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UsuarioRepository extends MongoRepository<Usuario, String> {
     Usuario findUsuarioById(String Id);
+
     @Query("{'nome': {$regex: ?0 }})")
     List<Usuario> findUsuarioByNome(String nome);
+
+    
+
+    //Usuario createUser(Usuario user);
 }

@@ -2,7 +2,9 @@ package com.example.apitcc.controllers;
 
 import java.util.List;
 
+import com.example.apitcc.models.Estado;
 import com.example.apitcc.models.Usuario;
+import com.example.apitcc.repository.EstadoRepository;
 import com.example.apitcc.repository.UsuarioRepository;
 
 import org.slf4j.Logger;
@@ -18,12 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @EnableMongoRepositories
-public class UsuarioController {
+public class UsuarioController{
 
     private Logger logger = LoggerFactory.getLogger(UsuarioController.class);
  
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    private EstadoRepository estadoRepository;
     
     @GetMapping(value = "/users")
     public List<Usuario> getAllUsers(){
@@ -34,7 +38,7 @@ public class UsuarioController {
     public Usuario getUserById(@PathVariable String userId) {
         logger.info("Getting users with ID: {}", userId);
         return usuarioRepository.findUsuarioById(userId);
-    } 
+    }
 
     @GetMapping(value = "/usersname/{username}")
     public List<Usuario> getUserByName(@PathVariable String username) {
@@ -50,7 +54,12 @@ public class UsuarioController {
 
     @PostMapping (value = "/users/create") 
     public Usuario addUsuario(@RequestBody Usuario user) { 
-        logger.info ("Saving user."); 
+        logger.info ("Saving user.");
+        // String teste;
+        // teste = user.getChefe().getId();
+        Estado estado = estadoRepository.findEstadoById(user.getEstado().getId());
+        user.setEstado(estado);
         return usuarioRepository.save(user); 
+        //return usuarioRepository.createUser(user);
     }
 }

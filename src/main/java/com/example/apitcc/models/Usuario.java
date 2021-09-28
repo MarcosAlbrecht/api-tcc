@@ -2,6 +2,7 @@ package com.example.apitcc.models;
 
 import java.util.Date;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "usuario")
@@ -15,13 +16,30 @@ public class Usuario {
     private int ddd;
     private String cep;
     private String cidade;
-    private String estado;
+    //private String estado;
     private String apelido;
     private String cpf;
     private String foto;
     private Date data_cadastro;
-
     
+    @DBRef
+    private Estado estado;
+
+    public Estado getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    } 
 
     public String get_id() {
         return this.id;
@@ -85,14 +103,6 @@ public class Usuario {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return this.estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public String getApelido() {
