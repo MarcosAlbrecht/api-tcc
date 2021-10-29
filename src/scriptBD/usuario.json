@@ -1,0 +1,68 @@
+[{
+  "_id": {
+    "$oid": "614b633007d4c252b2f43b85"
+  },
+  "nome": "Marcos Rocha Pato",
+  "idade": 18,
+  "telefone": "652189756",
+  "ddd": 45,
+  "cep": "85960000",
+  "cidade": "614482afa0e87dd375d05121",
+  "apelido": "marcola",
+  "cpf": "34658974521",
+  "foto": "",
+  "data_cadastro": {
+    "$date": "2021-09-22T00:00:00Z"
+  },
+  "_class": "com.example.apitcc.models.Usuario",
+  "data": {
+    "$date": "2021-10-28T03:00:00Z"
+  },
+  "estado": {}
+},{
+  "_id": {
+    "$oid": "617c0bee236a7e0c42a19900"
+  },
+  "nome": "Batman",
+  "idade": 100,
+  "telefone": "96531596",
+  "ddd": 45,
+  "cep": "85960000",
+  "cidade": "614482afa0e87dd375d05121",
+  "apelido": "BATMANBEGINS",
+  "cpf": "12365489756",
+  "foto": "",
+  "data_cadastro": {
+    "$date": "2021-10-29T00:00:00Z"
+  },
+  "estado": {
+    "$ref": "estado",
+    "$id": {
+      "$oid": "617bf98837ded4a065bc9dc9"
+    }
+  },
+  "_class": "com.example.apitcc.models.Usuario"
+},{
+  "_id": {
+    "$oid": "617c33f7b2f7a614385a266d"
+  },
+  "nome": "Iron man",
+  "idade": 100,
+  "telefone": "96531596",
+  "ddd": 45,
+  "cep": "85960000",
+  "cidade": "614482afa0e87dd375d05121",
+  "apelido": "rion",
+  "cpf": "12365489756",
+  "foto": "",
+  "data_cadastro": {
+    "$date": "2021-10-29T00:00:00Z"
+  },
+  "estado": {
+    "$ref": "estado",
+    "$id": {
+      "$oid": "617bf98837ded4a065bc9dc9"
+    }
+  },
+  "_class": "com.example.apitcc.models.Usuario"
+}]
