@@ -53,7 +53,8 @@ public class PostAdocaoController {
     @PostMapping (value = "/postadocao/create") 
     public PostAdocao addPostAdocao(@RequestBody PostAdocao postadocao) { 
         logger.info ("Saving POST ADOÇÃO.");
-
+        logger.info(postadocao.getDescricao());
+        
         //buscar a Raça conforme ID e seta a Raca do PostAdocao
         Raca raca = racaRespository.findRacaById(postadocao.getRaca().getId());
         postadocao.setRaca(raca);

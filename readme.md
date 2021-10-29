@@ -6,3 +6,5 @@ git add <nomedoarquivo>
 git commit –m “coloque sua mensagem aqui”
 git push origin main
 git remote add origin <>
+
+
