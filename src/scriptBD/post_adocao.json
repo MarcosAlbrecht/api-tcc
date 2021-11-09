@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "617be9a937ded4a065bc9dae"
+  },
+  "descricao": "descricao do animalzinho",
+  "idade_pet": 3,
+  "id_raca": {
+    "id": "617bec3f37ded4a065bc9dc2"
+  },
+  "porte": "grande",
+  "pelagem": "curto",
+  "latitude": "1526,2",
+  "longitude": "654554,1",
+  "data_criacao": {
+    "$date": "2021-10-29T03:00:00Z"
+  },
+  "id_usuario": "61448148a0e87dd375d05120",
+  "ativo": "s",
+  "fotos": [
+    "teste",
+    "teste2",
+    "teste3",
+    "teste4"
+  ]
+},{
+  "_id": {
+    "$oid": "617c3519b2f7a614385a266f"
+  },
+  "descricao": "adote este lindo doguinho caramelo",
+  "idade_pet": 1,
+  "porte": "grande",
+  "pelagem": "curto",
+  "latitude": "1526,2",
+  "longitude": "654554,1",
+  "data_criacao": {
+    "$date": "2021-10-29T03:00:00Z"
+  },
+  "ativo": "s",
+  "fotos": [
+    "teste",
+    "teste2",
+    "teste3",
+    "teste4"
+  ],
+  "usuario": {
+    "_id": {
+      "$oid": "617c0bee236a7e0c42a19900"
+    },
+    "nome": "Batman",
+    "idade": 100,
+    "telefone": "96531596",
+    "ddd": 45,
+    "cep": "85960000",
+    "cidade": "614482afa0e87dd375d05121",
+    "apelido": "BATMANBEGINS",
+    "cpf": "12365489756",
+    "foto": "",
+    "data_cadastro": {
+      "$date": "2021-10-29T00:00:00Z"
+    },
+    "estado": {
+      "$ref": "estado",
+      "$id": {
+        "$oid": "617bf98837ded4a065bc9dc9"
+      }
+    }
+  },
+  "raca": {
+    "_id": {
+      "$oid": "617bec3f37ded4a065bc9dc2"
+    },
+    "raca": "Shitzu"
+  },
+  "_class": "com.example.apitcc.models.PostAdocao"
+}]

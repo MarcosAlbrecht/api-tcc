@@ -1,0 +1,13 @@
+[{
+  "_id": {
+    "$oid": "617bf98837ded4a065bc9dc9"
+  },
+  "dsc_estado": "PARNÁ",
+  "uf": "PR"
+},{
+  "_id": {
+    "$oid": "617bfce437ded4a065bc9dd3"
+  },
+  "dsc_estado": "SAO PAULO",
+  "uf": "SP"
+}]
