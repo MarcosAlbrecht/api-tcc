@@ -35,7 +35,7 @@ public class UsuarioController{
         return usuarioRepository.findAll();
     }
     @GetMapping(value = "/usersid/{userId}")
-    public Usuario getUserById(@PathVariable String userId) {
+    public List<Usuario> getUserById(@PathVariable String userId) {
         logger.info("Getting users with ID: {}", userId);
         return usuarioRepository.findUsuarioById(userId);
     }
