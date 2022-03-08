@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class PostAdocao {
     @Id
     private String id;
+    private String nome;   
     private String descricao;
     private Integer idade_pet;
     private String porte;
@@ -18,9 +19,20 @@ public class PostAdocao {
     private String longitude;
     private Date data_criacao;
     private String ativo;
+    private String foto_dog;
     private List<String> fotos;
     private Usuario usuario;
     private Raca raca;
+
+
+    public String getFoto_dog() {
+        return this.foto_dog;
+    }
+
+    public void setFoto_dog(String foto_dog) {
+        this.foto_dog = foto_dog;
+    }
+    
 
     public Raca getRaca() {
         return this.raca;
@@ -28,6 +40,14 @@ public class PostAdocao {
 
     public void setRaca(Raca raca) {
         this.raca = raca;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getId() {

@@ -1,10 +1,18 @@
 package com.example.apitcc.models;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+@CompoundIndexes({ @CompoundIndex(name = "email_idx", def = "{'email' : 1}", unique = true, background = true)})
 @Document(collection = "usuario")
 public class Usuario {
  
@@ -20,19 +28,58 @@ public class Usuario {
     private String apelido;
     private String cpf;
     private String foto;
-    private Date data_cadastro;
-    
+    private LocalDateTime data_cadastro = LocalDateTime.now();
+    private String tipo_usuario;
+    private String token;
+    @Field(name = "email")
+    private String email;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
+
     @DBRef
-    private Estado estado;
+    private Endereco endereco;
 
-    public Estado getEstado() {
-        return this.estado;
+    public String getTipo_usuario() {
+        return this.tipo_usuario;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void setTipo_usuario(String tipo_usuario) {
+        this.tipo_usuario = tipo_usuario;
     }
 
+    public String getToken() {
+        return this.token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Endereco getEndereco() {
+        return this.endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
     public String getId() {
         return this.id;
     }
@@ -49,11 +96,11 @@ public class Usuario {
         this.id = _id;
     }
 
-    public Date getData_cadastro() {
+    public LocalDateTime getData_cadastro() {
         return this.data_cadastro;
     }
 
-    public void setData_cadastro(Date data_cadastro) {
+    public void setData_cadastro(LocalDateTime data_cadastro) {
         this.data_cadastro = data_cadastro;
     }
 

@@ -35,24 +35,32 @@ public class PostAdocaoController {
 
     @GetMapping(value = "/postadocao")
     public List<PostAdocao> getAllPostAdocao(){
-        logger.info("Getting all users.");
+        logger.info("Getting all AdoptionPost.");
         return postAdocaoRepository.findAll();
+
+
+        // List<PostAdocao> l = repository.findAll();
+        
+        // if (l.isEmpty())
+        //     return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        
+        // return new ResponseEntity<>(repository.findAll(), HttpStatus.FOUND);
     }
     @GetMapping(value = "/postadocaoid/{postId}")
     public List<PostAdocao> getPostAdocaoById(@PathVariable String postId) {
-        logger.info("Getting users with ID: {}", postId);
+        logger.info("Getting AdoptionPost with ID: {}", postId);
         return postAdocaoRepository.findPostAdocaoById(postId);
     }
 
     @PutMapping(value = "/postadocaoupdate/{postadocaoId}")
     public PostAdocao updatePostAdocao(@PathVariable String postadocaoId, @RequestBody PostAdocao postAdocao) {
-        logger.info("Updating user with ID: {}", postadocaoId);
+        logger.info("Updating AdoptionPost with ID: {}", postadocaoId);
         return postAdocaoRepository.save(postAdocao);
     }
 
     @PostMapping (value = "/postadocao/create") 
     public PostAdocao addPostAdocao(@RequestBody PostAdocao postadocao) { 
-        logger.info ("Saving POST ADOÇÃO.");
+        logger.info ("Saving Adoption Post.");
         logger.info(postadocao.getDescricao());
         
         //buscar a Raça conforme ID e seta a Raca do PostAdocao

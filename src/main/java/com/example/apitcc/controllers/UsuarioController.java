@@ -1,33 +1,51 @@
 package com.example.apitcc.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
-import com.example.apitcc.models.Estado;
+import javax.swing.text.TableView.TableRow;
+
+import com.example.apitcc.models.Endereco;
 import com.example.apitcc.models.Usuario;
-import com.example.apitcc.repository.EstadoRepository;
+import com.example.apitcc.repository.EnderecoRespository;
 import com.example.apitcc.repository.UsuarioRepository;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @EnableMongoRepositories
 public class UsuarioController{
 
     private Logger logger = LoggerFactory.getLogger(UsuarioController.class);
+
+    @Autowired
+    private PasswordEncoder encoder;
  
     @Autowired
     private UsuarioRepository usuarioRepository;
+    
     @Autowired
-    private EstadoRepository estadoRepository;
+    private EnderecoRespository enderecoRepository;
+
+    @ResponseBody
+    public ResponseEntity<?> all() {
+        return new ResponseEntity<>(usuarioRepository.findAll(), HttpStatus.FOUND);
+    }
+
     
     @GetMapping(value = "/users")
     public List<Usuario> getAllUsers(){
@@ -35,7 +53,7 @@ public class UsuarioController{
         return usuarioRepository.findAll();
     }
     @GetMapping(value = "/usersid/{userId}")
-    public List<Usuario> getUserById(@PathVariable String userId) {
+    public Usuario getUserById(@PathVariable String userId) {
         logger.info("Getting users with ID: {}", userId);
         return usuarioRepository.findUsuarioById(userId);
     }
@@ -44,6 +62,40 @@ public class UsuarioController{
     public List<Usuario> getUserByName(@PathVariable String username) {
         logger.info("Getting users with Name: {}", username);
         return usuarioRepository.findUsuarioByNome(username);
+    } 
+
+    @GetMapping(value = "/login")
+    public Usuario getLogin(@RequestParam String email, @RequestParam String password) {
+        logger.info("Getting login: {}", email);
+
+        // Optional<Usuario> o = usuarioRepository.findUsuarioByEmail(email);
+        
+        // if (!o.isPresent())        
+        //     return new ResponseEntity<>("{\"message\":\"incorrect email\"}", HttpStatus.NOT_FOUND);
+        // else{
+        //     boolean valid = encoder.matches(password, o.get().getPassword());
+        //     if (valid) {
+        //         return new ResponseEntity<>(usuarioRepository.findUsuarioByEmail(email), HttpStatus.FOUND);
+        //     }else{
+        //         return new ResponseEntity<>("{\"message\":\"incorrect password\"}", HttpStatus.NOT_FOUND);
+        //     }    
+        // }
+
+        //return new ResponseEntity<>(usuarioRepository.findUsuarioByEmail(email), HttpStatus.FOUND);
+
+        Usuario u = usuarioRepository.findUsuarioByEmail(email);
+
+        if (u.getEmail() == null) {
+            throw new IllegalStateException("not found users with email" + email);   
+        }else{
+
+            boolean valid = encoder.matches(password, u.getPassword());
+            if (valid) {
+                return usuarioRepository.findUsuarioByEmail(email); 
+            }else{
+                throw new IllegalStateException("bab password");
+            }
+        }           
     } 
 
     @PutMapping(value = "/usersupdate/{userId}")
@@ -57,8 +109,13 @@ public class UsuarioController{
         logger.info ("Saving user.");
         // String teste;
         // teste = user.getChefe().getId();
-        Estado estado = estadoRepository.findEstadoById(user.getEstado().getId());
-        user.setEstado(estado);
+        //Estado estado = estadoRepository.findEstadoById(user.getEstado().getId());
+        //user.setEstado(estado);
+        user.setPassword(encoder.encode(user.getPassword()));
+
+        Endereco endereco = enderecoRepository.findEnderecoById(user.getEndereco().getId());
+        user.setEndereco(endereco);
+
         return usuarioRepository.save(user); 
         //return usuarioRepository.createUser(user);
     }
