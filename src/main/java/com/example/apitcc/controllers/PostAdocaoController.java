@@ -63,6 +63,8 @@ public class PostAdocaoController {
         logger.info ("Saving Adoption Post.");
         logger.info(postadocao.getDescricao());
         
+        postadocao.getRaca();
+        String nome = postadocao.getNome();
         //buscar a Raça conforme ID e seta a Raca do PostAdocao
         Raca raca = racaRespository.findRacaById(postadocao.getRaca().getId());
         postadocao.setRaca(raca);
