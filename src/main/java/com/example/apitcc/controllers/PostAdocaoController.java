@@ -47,7 +47,7 @@ public class PostAdocaoController {
         // return new ResponseEntity<>(repository.findAll(), HttpStatus.FOUND);
     }
     @GetMapping(value = "/postadocaoid/{postId}")
-    public List<PostAdocao> getPostAdocaoById(@PathVariable String postId) {
+    public PostAdocao getPostAdocaoById(@PathVariable String postId) {
         logger.info("Getting AdoptionPost with ID: {}", postId);
         return postAdocaoRepository.findPostAdocaoById(postId);
     }
