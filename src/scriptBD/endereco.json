@@ -1,0 +1,12 @@
+[{
+  "_id": {
+    "$oid": "6217791ff09ba890fb93fb59"
+  },
+  "bairro": "PRIMAVERA",
+  "cidade": "MARECHAL CANDIDO RONDON",
+  "complento": "casa",
+  "estado": "PARANÁ",
+  "logradouro": "TRAVESSA RIO BRANCO",
+  "numero": "5201",
+  "uf": "PR"
+}]

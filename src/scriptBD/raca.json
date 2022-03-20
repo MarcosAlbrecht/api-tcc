@@ -8,4 +8,15 @@
     "$oid": "617bec3f37ded4a065bc9dc2"
   },
   "raca": "Shitzu"
+},{
+  "_id": {
+    "$oid": "622950f70232b0d83475fd0c"
+  },
+  "raca": "Pastor Alemão"
+},{
+  "_id": {
+    "$oid": "622dec714f39c639be0b051d"
+  },
+  "raca": "fila",
+  "_class": "com.example.apitcc.models.Raca"
 }]

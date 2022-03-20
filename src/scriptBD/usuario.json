@@ -1,67 +1,51 @@
 [{
   "_id": {
-    "$oid": "614b633007d4c252b2f43b85"
+    "$oid": "621787249c4e8563c41830e1"
   },
-  "nome": "Marcos Rocha Pato",
-  "idade": 18,
-  "telefone": "652189756",
+  "nome": "luana",
+  "idade": 28,
+  "telefone": "932546125",
   "ddd": 45,
-  "cep": "85960000",
-  "cidade": "614482afa0e87dd375d05121",
-  "apelido": "marcola",
-  "cpf": "34658974521",
-  "foto": "",
+  "apelido": "luanaftavares",
+  "cpf": "08099652916",
+  "foto": "https://www.bonde.com.br/img/bondenews/2019/11/img_1_75_1491.jpg",
   "data_cadastro": {
-    "$date": "2021-09-22T00:00:00Z"
+    "$date": "2022-02-24T00:00:00Z"
   },
-  "_class": "com.example.apitcc.models.Usuario",
-  "data": {
-    "$date": "2021-10-28T03:00:00Z"
-  },
-  "estado": {}
-},{
-  "_id": {
-    "$oid": "617c0bee236a7e0c42a19900"
-  },
-  "nome": "Batman",
-  "idade": 100,
-  "telefone": "96531596",
-  "ddd": 45,
-  "cep": "85960000",
-  "cidade": "614482afa0e87dd375d05121",
-  "apelido": "BATMANBEGINS",
-  "cpf": "12365489756",
-  "foto": "",
-  "data_cadastro": {
-    "$date": "2021-10-29T00:00:00Z"
-  },
-  "estado": {
-    "$ref": "estado",
+  "tipo_usuario": "admin",
+  "token": "",
+  "email": "luannaftavares@hotmail.com",
+  "password": "123456",
+  "endereco": {
+    "$ref": "endereco",
     "$id": {
-      "$oid": "617bf98837ded4a065bc9dc9"
+      "$oid": "6217791ff09ba890fb93fb59"
     }
   },
   "_class": "com.example.apitcc.models.Usuario"
 },{
   "_id": {
-    "$oid": "617c33f7b2f7a614385a266d"
+    "$oid": "6217e53353384a6c939b1ed1"
   },
-  "nome": "Iron man",
-  "idade": 100,
-  "telefone": "96531596",
+  "nome": "Marcos",
+  "idade": 28,
+  "telefone": "999119635",
   "ddd": 45,
   "cep": "85960000",
-  "cidade": "614482afa0e87dd375d05121",
-  "apelido": "rion",
-  "cpf": "12365489756",
-  "foto": "",
+  "apelido": "marcosalbrecht",
+  "cpf": "09348031961",
+  "foto": "https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584__340.png",
   "data_cadastro": {
-    "$date": "2021-10-29T00:00:00Z"
+    "$date": "2022-02-24T20:06:11.712Z"
   },
-  "estado": {
-    "$ref": "estado",
+  "tipo_usuario": "admin",
+  "token": "",
+  "email": "marcosralbrecht@gmail.com",
+  "password": "$2a$10$mBQH3PzdhEeDI.l/gTCqO.nxIUko6cAqEpvvwVnCGubjqY7BQ5StW",
+  "endereco": {
+    "$ref": "endereco",
     "$id": {
-      "$oid": "617bf98837ded4a065bc9dc9"
+      "$oid": "6217791ff09ba890fb93fb59"
     }
   },
   "_class": "com.example.apitcc.models.Usuario"
