@@ -1,5 +1,6 @@
 package com.example.apitcc.models;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class PostAdocao {
     private String pelagem;
     private String latitude;
     private String longitude;
-    private Date data_criacao;
+    private LocalDateTime data_criacao = LocalDateTime.now();
     private String ativo;
     private String foto_dog;
     private List<String> fotos;
@@ -106,11 +107,11 @@ public class PostAdocao {
         this.longitude = longitude;
     }
 
-    public Date getData_criacao() {
+    public LocalDateTime getData_criacao() {
         return this.data_criacao;
     }
 
-    public void setData_criacao(Date data_criacao) {
+    public void setData_criacao(LocalDateTime data_criacao) {
         this.data_criacao = data_criacao;
     }
 

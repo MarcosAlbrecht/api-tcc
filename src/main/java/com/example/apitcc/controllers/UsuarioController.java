@@ -98,6 +98,22 @@ public class UsuarioController{
         }           
     } 
 
+    @GetMapping(value = "/loginId")
+    public Usuario getLogin(@RequestParam String idUser) {
+        logger.info("Getting login with ID: {}", idUser);
+
+
+        Usuario u = usuarioRepository.findUsuarioById(idUser);
+
+        if (u != null) {
+            
+            return u;   
+        }else{
+            throw new IllegalStateException("not found users with ID");
+            
+        }           
+    } 
+
     @PutMapping(value = "/usersupdate/{userId}")
     public Usuario updateUser(@PathVariable String userId, @RequestBody Usuario usuario) {
         logger.info("Updating user with ID: {}", userId);

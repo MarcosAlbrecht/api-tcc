@@ -1,5 +1,6 @@
 package com.example.apitcc.controllers;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.apitcc.models.PostAdocao;
 import com.example.apitcc.models.Raca;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableMongoRepositories
 public class PostAdocaoController {
-    private Logger logger = LoggerFactory.getLogger(UsuarioController.class);
+    private Logger logger = LoggerFactory.getLogger(PostAdocaoController.class);
     
     @Autowired
     private PostAdocaoRepository postAdocaoRepository;
@@ -55,7 +56,35 @@ public class PostAdocaoController {
     @PutMapping(value = "/postadocaoupdate/{postadocaoId}")
     public PostAdocao updatePostAdocao(@PathVariable String postadocaoId, @RequestBody PostAdocao postAdocao) {
         logger.info("Updating AdoptionPost with ID: {}", postadocaoId);
-        return postAdocaoRepository.save(postAdocao);
+        postAdocao.getId();
+        PostAdocao pa = postAdocaoRepository.findPostAdocaoById(postAdocao.getId());
+        //return postAdocaoRepository.save(postAdocao);
+        if (pa != null) {
+            Raca raca = racaRespository.findRacaById(postAdocao.getRaca().getId());
+            postAdocao.setRaca(raca);
+
+            //buscar Ousuario conforme ID e seta o Usuario do PostAdocao
+            Usuario user = usuarioRepository.findUsuarioById(postAdocao.getUsuario().getId());
+            postAdocao.setUsuario(user);    
+
+
+            pa.setAtivo(postAdocao.getAtivo());
+            pa.setDescricao(postAdocao.getDescricao());
+            pa.setFotos(postAdocao.getFotos());
+            pa.setIdade_pet(postAdocao.getIdade_pet());
+            pa.setLatitude(postAdocao.getLatitude());
+            pa.setLongitude(postAdocao.getLongitude());
+            pa.setNome(postAdocao.getNome());
+            pa.setPelagem(postAdocao.getPelagem());
+            pa.setPorte(postAdocao.getPorte());
+            pa.setRaca(raca);
+            pa.setUsuario(user);
+
+            return postAdocaoRepository.save(pa);   
+        }else{
+            throw new IllegalStateException("erro"+":"+"Ocorreu um erro inesperado");   
+        }
+        
     }
 
     @PostMapping (value = "/postadocao/create") 
