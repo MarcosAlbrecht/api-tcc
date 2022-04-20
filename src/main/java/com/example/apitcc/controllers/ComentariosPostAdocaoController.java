@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,6 +68,20 @@ public class ComentariosPostAdocaoController {
 
         return comentariosAdocaoRepository.save(comentarioAdocao); 
         //return usuarioRepository.createUser(user);
+    }
+
+    @DeleteMapping("/deleteComentarioAdocao/{empId}")
+    public ComentariosAdocao deleteComentarioPessoal(@PathVariable String empId) {        
+        ComentariosAdocao cp = comentariosAdocaoRepository.findComentarioAdocaoById(empId);
+
+        if (cp != null){
+            comentariosAdocaoRepository.deleteComentPostAdocaoById(empId);
+        }else{
+            throw new IllegalStateException("erro"+":"+"Ocorreu um erro inesperado");   
+        }
+        return cp;
+        
+        
     }
 
     

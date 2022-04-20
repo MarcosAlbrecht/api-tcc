@@ -15,9 +15,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -68,6 +70,40 @@ public class ComentariosPostPessoalController {
 
         return comentariosPessoalRepository.save(comentarioPessoal); 
         //return usuarioRepository.createUser(user);
+    }
+
+    @PutMapping(value = "/comentariopessoalupdate")
+    public ComentariosPessoal updatePostAdocao(@RequestBody ComentariosPessoal comentarioPessoal) {
+        logger.info("Updating AdoptionPost with ID: {}");
+        comentarioPessoal.getId();
+        ComentariosPessoal cp = comentariosPessoalRepository.findComentarioPessoalById(comentarioPessoal.getId());
+        //return postAdocaoRepository.save(postAdocao);
+        if (cp != null) {          
+
+            //buscar Ousuario conforme ID e seta o Usuario do PostAdocao
+
+            cp.setComentario(comentarioPessoal.getComentario());
+            
+
+            return comentariosPessoalRepository.save(cp);   
+        }else{
+            throw new IllegalStateException("erro"+":"+"Ocorreu um erro inesperado");   
+        }
+        
+    }
+
+    @DeleteMapping("/deleteComentarioPessoal/{empId}")
+    public ComentariosPessoal deleteComentarioPessoal(@PathVariable String empId) {        
+        ComentariosPessoal cp = comentariosPessoalRepository.findComentarioPessoalById(empId);
+
+        if (cp != null){
+            comentariosPessoalRepository.deletePostPessoalById(empId);
+        }else{
+            throw new IllegalStateException("erro"+":"+"Ocorreu um erro inesperado");   
+        }
+        return cp;
+        
+        
     }
 
 }

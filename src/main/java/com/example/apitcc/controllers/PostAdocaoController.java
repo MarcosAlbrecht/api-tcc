@@ -1,14 +1,11 @@
 package com.example.apitcc.controllers;
 import java.util.List;
-import java.util.Optional;
-
 import com.example.apitcc.models.PostAdocao;
 import com.example.apitcc.models.Raca;
 import com.example.apitcc.models.Usuario;
 import com.example.apitcc.repository.PostAdocaoRepository;
 import com.example.apitcc.repository.RacaRepository;
 import com.example.apitcc.repository.UsuarioRepository;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

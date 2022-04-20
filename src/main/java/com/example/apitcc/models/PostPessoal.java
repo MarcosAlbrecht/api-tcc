@@ -1,8 +1,10 @@
 package com.example.apitcc.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "post_pessoal")
@@ -14,6 +16,15 @@ public class PostPessoal {
     private LocalDateTime data_criacao = LocalDateTime.now();
     private Integer likes; 
     private Usuario usuario; 
+    private Integer comentariosPessoal;
+
+    public Integer getComentariosPessoal() {
+        return this.comentariosPessoal;
+    }
+
+    public void setComentariosPessoal(Integer comentariosPessoal) {
+        this.comentariosPessoal = comentariosPessoal;
+    } 
 
     public Usuario getUsuario() {
         return this.usuario;

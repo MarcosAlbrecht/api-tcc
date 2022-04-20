@@ -1,10 +1,5 @@
 package com.example.apitcc.controllers;
-
 import java.util.List;
-import java.util.Optional;
-
-import javax.swing.text.TableView.TableRow;
-
 import com.example.apitcc.models.Endereco;
 import com.example.apitcc.models.Usuario;
 import com.example.apitcc.repository.EnderecoRespository;
