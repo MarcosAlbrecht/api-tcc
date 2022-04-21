@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -68,6 +69,26 @@ public class ComentariosPostAdocaoController {
 
         return comentariosAdocaoRepository.save(comentarioAdocao); 
         //return usuarioRepository.createUser(user);
+    }
+
+    @PutMapping(value = "/comentarioadocaoupdate")
+    public ComentariosAdocao updatePostAdocao(@RequestBody ComentariosAdocao comentarioAdocao) {
+        logger.info("Updating AdoptionPost with ID: {}");
+        comentarioAdocao.getId();
+        ComentariosAdocao cp = comentariosAdocaoRepository.findComentarioAdocaoById(comentarioAdocao.getId());
+        //return postAdocaoRepository.save(postAdocao);
+        if (cp != null) {          
+
+            //buscar Ousuario conforme ID e seta o Usuario do PostAdocao
+
+            cp.setComentario(comentarioAdocao.getComentario());
+            
+
+            return comentariosAdocaoRepository.save(cp);   
+        }else{
+            throw new IllegalStateException("erro"+":"+"Ocorreu um erro inesperado");   
+        }
+        
     }
 
     @DeleteMapping("/deleteComentarioAdocao/{empId}")
