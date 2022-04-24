@@ -7,12 +7,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Endereco {
     @Id
     private String id;
-    private String estado;
+    private String localidade;
     private String uf; 
-    private String cidade; 
     private String logradouro; 
     private String complemento; 
-    private String numero; 
+    private String numero;
+    private String bairro; 
+
+    public String getBairro() {
+        return this.bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
 
     public String getId() {
         return this.id;
@@ -22,12 +30,12 @@ public class Endereco {
         this.id = id;
     }
 
-    public String getEstado() {
-        return this.estado;
+    public String getLocalidade() {
+        return this.localidade;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
     }
 
     public String getUf() {
@@ -36,14 +44,6 @@ public class Endereco {
 
     public void setUf(String uf) {
         this.uf = uf;
-    }
-
-    public String getCidade() {
-        return this.cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
     }
 
     public String getLogradouro() {

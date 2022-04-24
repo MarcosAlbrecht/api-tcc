@@ -112,7 +112,40 @@ public class UsuarioController{
     @PutMapping(value = "/usersupdate/{userId}")
     public Usuario updateUser(@PathVariable String userId, @RequestBody Usuario usuario) {
         logger.info("Updating user with ID: {}", userId);
-        return usuarioRepository.save(usuario);
+       
+
+        Usuario pa = usuarioRepository.findUsuarioById(usuario.getId());
+        //return postAdocaoRepository.save(postAdocao);
+        if (pa != null) {       
+
+            //buscar Ousuario conforme ID e seta o Usuario do PostAdocao
+            Endereco end = enderecoRepository.findEnderecoById(usuario.getEndereco().getId());
+
+
+            pa.setApelido(usuario.getApelido());
+            pa.setCep(usuario.getCep());
+            pa.setCpf(usuario.getCpf());
+            pa.setDdd(usuario.getDdd());
+            pa.setEmail(usuario.getEmail());
+            pa.setEndereco(end);
+            pa.setFoto(usuario.getFoto());
+            pa.setIdade(usuario.getIdade());
+            pa.setNome(usuario.getNome());
+
+            //verifica se a senha foi alterada, se for gera uma nova hash,
+            //se nao continua a mesma
+            boolean valid = encoder.matches(usuario.getPassword(), pa.getPassword());
+            if (valid) {
+                pa.setPassword(usuario.getPassword()); 
+            }else{
+                pa.setPassword(encoder.encode(usuario.getPassword()));
+            }
+            pa.setTelefone(usuario.getTelefone());      
+
+            return usuarioRepository.save(pa);   
+        }else{
+            throw new IllegalStateException("erro"+":"+"Ocorreu um erro inesperado");   
+        }
     }
 
     @PostMapping (value = "/users/create") 

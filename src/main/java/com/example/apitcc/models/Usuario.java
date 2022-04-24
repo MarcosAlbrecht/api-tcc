@@ -23,7 +23,6 @@ public class Usuario {
     private String telefone;
     private int ddd;
     private String cep;
-    private String cidade;
     //private String estado;
     private String apelido;
     private String cpf;
@@ -34,7 +33,7 @@ public class Usuario {
     @Field(name = "email")
     private String email;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @DBRef
@@ -142,14 +141,6 @@ public class Usuario {
 
     public void setCep(String cep) {
         this.cep = cep;
-    }
-
-    public String getCidade() {
-        return this.cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
     }
 
     public String getApelido() {
