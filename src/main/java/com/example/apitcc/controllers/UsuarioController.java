@@ -134,8 +134,8 @@ public class UsuarioController{
 
             //verifica se a senha foi alterada, se for gera uma nova hash,
             //se nao continua a mesma
-            boolean valid = encoder.matches(usuario.getPassword(), pa.getPassword());
-            if (valid) {
+            //boolean valid = encoder.matches(usuario.getPassword(), pa.getPassword());
+            if (pa.getPassword().equals(usuario.getPassword())) {
                 pa.setPassword(usuario.getPassword()); 
             }else{
                 pa.setPassword(encoder.encode(usuario.getPassword()));

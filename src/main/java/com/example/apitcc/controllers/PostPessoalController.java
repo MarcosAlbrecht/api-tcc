@@ -1,5 +1,6 @@
 package com.example.apitcc.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.apitcc.models.ComentariosPessoal;
@@ -99,6 +100,64 @@ public class PostPessoalController {
             pa.setFoto(postPessoal.getFoto());
             pa.setLikes(postPessoal.getLikes());
             pa.setUsuario(user);
+           
+
+            return postPessoalRepository.save(pa);   
+        }else{
+            throw new IllegalStateException("erro"+":"+"Ocorreu um erro inesperado");   
+        }
+        
+    }
+
+    @PutMapping(value = "/postpessoalupdate/likeadd/{postpessoalId}/{iduser}")
+    public PostPessoal updatePostAdocaoLikeAdd(@PathVariable String postpessoalId, @PathVariable String iduser) {
+        logger.info("Updating adocao like with ID: {}", postpessoalId);
+        
+        PostPessoal pa = postPessoalRepository.findPostPessoalById(postpessoalId);
+        //return postAdocaoRepository.save(postAdocao);
+        if (pa != null) {       
+
+            //buscar Ousuario conforme ID e seta o Usuario do PostAdocao  
+            List<String> listaLikes = new ArrayList<String>();
+            
+            if (pa.getLikes() != null) {
+                listaLikes = pa.getLikes();    
+            }
+            
+
+            listaLikes.add(iduser);
+
+            pa.setLikes(listaLikes);
+            pa.setLiked(true);
+
+            return postPessoalRepository.save(pa);   
+        }else{
+            throw new IllegalStateException("erro"+":"+"Ocorreu um erro inesperado");   
+        }
+        
+    }
+
+    @PutMapping(value = "/postpessoalupdate/likeremove/{postpessoalId}/{iduser}")
+    public PostPessoal updatePostAdocaoLikeRemove(@PathVariable String postpessoalId, @PathVariable String iduser) {
+        logger.info("Updating adocao like with ID: {}", postpessoalId);
+        
+        PostPessoal pa = postPessoalRepository.findPostPessoalById(postpessoalId);
+        //return postAdocaoRepository.save(postAdocao);
+        if (pa != null) {       
+
+            //buscar Ousuario conforme ID e seta o Usuario do PostAdocao  
+            List<String> listaLikes = pa.getLikes();
+
+            for (String id : listaLikes) {
+                if (id.equals(iduser)) {
+                    listaLikes.remove(id);
+                    break;
+                }
+            }
+
+            pa.setLiked(false);
+
+            pa.setLikes(listaLikes);
            
 
             return postPessoalRepository.save(pa);   

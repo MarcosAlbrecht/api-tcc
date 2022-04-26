@@ -14,9 +14,30 @@ public class PostPessoal {
     private String descricao;
     private String foto; 
     private LocalDateTime data_criacao = LocalDateTime.now();
-    private Integer likes; 
+    private List<String> likes;    
     private Usuario usuario; 
     private Integer comentariosPessoal;
+    private boolean liked = false;
+
+    public boolean isLiked() {
+        return this.liked;
+    }
+
+    public boolean getLiked() {
+        return this.liked;
+    }
+
+    public void setLiked(boolean liked) {
+        this.liked = liked;
+    }
+
+    public List<String> getLikes() {
+        return this.likes;
+    }
+
+    public void setLikes(List<String> likes) {
+        this.likes = likes;
+    }
 
     public Integer getComentariosPessoal() {
         return this.comentariosPessoal;
@@ -64,15 +85,6 @@ public class PostPessoal {
 
     public void setData_criacao(LocalDateTime data_criacao) {
         this.data_criacao = data_criacao;
-    }
-
-    public Integer getLikes() {
-        return this.likes;
-    }
-
-    public void setLikes(Integer likes) {
-        this.likes = likes;
-    }
-    
+    }   
     
 }
