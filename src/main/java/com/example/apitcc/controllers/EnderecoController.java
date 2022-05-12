@@ -47,7 +47,7 @@ public class EnderecoController {
     @PutMapping(value = "/enderecoupdate")
     public Endereco updatePostAdocao(@RequestBody Endereco endereco) {
         logger.info("Updating endereco with ID: {}");
-        endereco.getId();
+        endereco.getBairro();
         Endereco cp = enderecoRepository.findEnderecoById(endereco.getId());
         //return postAdocaoRepository.save(postAdocao);
         if (cp != null) {          

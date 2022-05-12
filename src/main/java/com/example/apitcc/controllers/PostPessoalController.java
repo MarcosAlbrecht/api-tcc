@@ -129,8 +129,20 @@ public class PostPessoalController {
 
             pa.setLikes(listaLikes);
             pa.setLiked(true);
+            
 
-            return postPessoalRepository.save(pa);   
+            postPessoalRepository.save(pa); 
+            
+            
+            List<ComentariosPessoal> cp;
+            cp = comentariosPessoalRepository.findComentarioPostPessoalById(pa.getId());
+            logger.info (Integer.toString( cp.size()));
+            if (cp.size() > 0){                
+                pa.setComentariosPessoal(cp.size());  
+            }; 
+            return pa;
+            
+        
         }else{
             throw new IllegalStateException("erro"+":"+"Ocorreu um erro inesperado");   
         }
@@ -160,7 +172,15 @@ public class PostPessoalController {
             pa.setLikes(listaLikes);
            
 
-            return postPessoalRepository.save(pa);   
+            postPessoalRepository.save(pa); 
+            
+            List<ComentariosPessoal> cp;
+            cp = comentariosPessoalRepository.findComentarioPostPessoalById(pa.getId());
+            logger.info (Integer.toString( cp.size()));
+            if (cp.size() > 0){                
+                pa.setComentariosPessoal(cp.size());  
+            }; 
+            return pa;
         }else{
             throw new IllegalStateException("erro"+":"+"Ocorreu um erro inesperado");   
         }
